@@ -1,0 +1,143 @@
+package exam;
+import java.util.*; 
+
+public class Departments {
+	
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int r = sc.nextInt();sc.nextLine();
+		Dept[] arr = new Dept[r];
+		
+		for (int i =0 ; i<arr.length ;i++) {
+			int a = sc.nextInt();sc.nextLine();
+			String b = sc.nextLine();
+			int c = sc.nextInt();sc.nextLine();
+			Perfor[] per = new Perfor[c] ;
+			
+			for (int j = 0 ; j<per.length ; j++) {
+				String x = sc.nextLine();
+				double y = sc.nextDouble();sc.nextLine();
+				per[j] = new Perfor(x,y);
+			}
+			arr[i] = new Dept(a,b,c,per);
+		}
+		int dept = sc.nextInt();sc.nextLine();
+		double avg = sc.nextDouble();sc.close();
+		
+		HashSet<Double> ans1 =getUniqueRateBydept(arr,dept);
+		if (ans1 != null) {
+			for (Double k : ans1) {
+				System.out.println(k);
+			}
+		}else {
+			System.out.println("Department Not Found");
+		}
+		
+		ArrayList<String> ans2 =getAvgRateByDept(arr,avg);
+		if(ans2 != null) {
+			for (String q : ans2) {
+				System.out.println(q);
+			}
+		}else {
+			System.out.println("No Department Found with Above Threshold");
+		}
+		
+	}
+	public static HashSet<Double> getUniqueRateBydept(Dept[] arr , int dept){
+		HashSet<Double> ans = new HashSet<>() ;
+		
+		for (int i = 0 ; i<arr.length ; i++) {
+			if (arr[i].getDepid()==dept) {
+				Perfor[] per = arr[i].getPerfor() ;
+				for (int j =0 ; j<per.length ; j++) {
+					ans.add(per[j].getrate());
+					
+				}
+			}
+		}
+		if (ans.size() != 0) {
+			return ans ;
+		}else {
+			return null ;
+		}
+	}
+	public static ArrayList<String> getAvgRateByDept(Dept[] arr , double avg ){
+		ArrayList<String> ans = new ArrayList<>() ;
+		 for (int i = 0;i<arr.length ;i++) {
+			 Perfor[] per = arr[i].getPerfor() ;
+			 double sum = 0 ;
+			 int c = 0 ;
+			 for (int j = 0 ; j<arr.length ; j++) {
+				 sum = sum + per[j].getrate();
+				 c++ ; 
+			 }
+			 if ((sum/c)>avg) {
+				 ans.add(arr[i].getDepName());
+			 }
+		 }
+		 if (ans.size() != 0) {
+			 return ans ;
+		 }else {
+			 return null ;
+		 }
+		 
+	}
+	
+}
+
+class Dept {
+	private int depid ;
+	private String depName ;
+	private int totalEmp ;
+	private Perfor[] perfor ;
+	public Dept(int depid, String depName, int totalEmp, Perfor[] perfor) {
+		super();
+		this.depid = depid;
+		this.depName = depName;
+		this.totalEmp = totalEmp;
+		this.perfor = perfor;
+	}
+	public int getDepid() {
+		return depid;
+	}
+	public void setDepid(int depid) {
+		this.depid = depid;
+	}
+	public String getDepName() {
+		return depName;
+	}
+	public void setDepName(String depName) {
+		this.depName = depName;
+	}
+	public int getTotalEmp() {
+		return totalEmp;
+	}
+	public void setTotalEmp(int totalEmp) {
+		this.totalEmp = totalEmp;
+	}
+	public Perfor[] getPerfor() {
+		return perfor;
+	}
+	public void setPerfor(Perfor[] perfor) {
+		this.perfor = perfor;
+	}
+	
+	
+}
+
+class Perfor {
+	private String EmpName ;
+	private double rating ;
+	
+	public Perfor(String EmpName , double rating) {
+		this.EmpName = EmpName ;
+		this.rating = rating ;
+	}
+	
+	public String getEmpName() {
+		return EmpName ;
+	}
+	public double getrate() {
+		return rating ;
+	}
+}
