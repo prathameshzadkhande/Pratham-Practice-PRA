@@ -1,0 +1,85 @@
+Problem Statement:
+
+Performance Analysis of Departments
+
+In a company, there are multiple departments, and each department has employees with performance ratings. The management wants to analyze department-wise ratings based on the following requirements:
+
+Find all unique performance ratings for a given department.
+
+Identify departments whose average employee rating exceeds a given threshold.
+
+Your task is to implement a program that processes department details, employee performance ratings, and then performs the above queries.
+Input Format:
+
+The first line contains an integer N representing the number of departments.
+
+The next N blocks contain department details:
+
+An integer D_id representing the department ID.
+
+A string D_name representing the department name.
+
+An integer E representing the number of employees in that department.
+
+The next E lines contain:
+
+A string E_name representing the employee name.
+
+A double rating representing the employee's performance rating.
+
+An integer D_query representing a department ID for which unique ratings need to be fetched.
+
+A double threshold representing the average rating threshold to find departments that exceed this rating.
+
+Output Format:
+
+If department D_query exists, print all unique ratings for that department in separate lines.
+
+If the department does not exist, print "Department Not Found".
+
+If any department has an average rating greater than threshold, print their department names in separate lines.
+
+If no department satisfies this condition, print "No Department Found with Above Threshold".
+
+
+Example Input 1:
+2
+101
+HR
+3
+Alice
+4.5
+Bob
+3.8
+Charlie
+4.5
+102
+IT
+2
+David
+5.0
+Eve
+4.7
+101
+4.0
+
+Output:
+4.5
+3.8
+IT
+
+Example Input 2:
+1
+103
+Finance
+2
+John
+3.5
+Jane
+3.2
+104
+3.8
+
+Output:
+Department Not Found
+No Department Found with Above Threshold
