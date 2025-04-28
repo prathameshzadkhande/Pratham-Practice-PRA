@@ -1,0 +1,102 @@
+package exam;
+
+import java.util.Scanner;
+
+public class Student {
+	public static void main(String args[]) {
+		Scanner sc = new Scanner(System.in);
+		int n = sc.nextInt();sc.nextLine();
+		Students[] arr = new Students[n];
+		
+		for (int i = 0 ; i<arr.length;i++) {
+			int a = sc.nextInt();sc.nextLine();
+			String b = sc.nextLine();
+			int c = sc.nextInt();sc.nextLine();
+			int d = sc.nextInt();sc.nextLine();
+			
+			arr[i] = new Students(a,b,c,d);
+		}
+		int Id = sc.nextInt();sc.nextLine();sc.close();
+		Students max = Maxage(arr);
+		Students ids = SearchById(arr,Id);
+		if (max != null) {
+				System.out.println(max.getId());
+				System.out.println(max.getname());
+				System.out.println(max.getmark());
+				System.out.println(max.getage());
+			}else {
+				System.out.println("No Max Age");
+			}
+		if (ids != null) {
+			System.out.println(ids.getId());
+			System.out.println(ids.getname());
+			System.out.println(ids.getmark());
+			System.out.println(ids.getage());
+		}else {
+			System.out.println("No id Found");
+		}
+		
+		}
+	
+	
+	public static Students Maxage(Students[] arr) {
+		int age = Integer.MIN_VALUE ;
+		Students ans = null ;
+		for (int i = 0 ; i<arr.length ; i++) {
+			if (arr[i].getage() > age) {
+				age = arr[i].getage();
+				ans = arr[i] ;
+			}
+		}
+		if (age> 0) {
+			return ans ;
+		}else {
+			return null ;
+		}
+	}
+	
+	public static Students SearchById(Students[] arr , int Id) {
+		Students ans = null ;
+		
+		for (int i = 0 ; i<arr.length ; i++) {
+			if (arr[i].getId() == Id) {
+				ans = arr[i];
+			}
+		}
+		if (ans != null ) {
+			return ans ;
+		}else {
+			return null ;
+		}
+	}
+	
+
+
+}
+
+class Students {
+	int Id ;
+	String name ;
+	int mark ;
+	int age ;
+	
+	public Students(int  Id , String name , int mark , int age) {
+		this.Id = Id ;
+		this.name = name ;
+		this.mark = mark ;
+		this.age = age ;
+	}
+	
+	public int getId() {
+		return Id ;
+	}
+	public String getname() {
+		return name ;
+	}
+	public int getmark() {
+		return mark ;
+	}
+	public int getage() {
+		return age ;
+	}
+}
