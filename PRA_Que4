@@ -1,0 +1,67 @@
+Student Information Processing
+Problem Statement
+You are given a list of students. Each student has:
+A student ID
+A name
+A mark
+An age
+
+You are required to:
+Find the student who has the maximum age.
+Find the student who matches a given ID.
+Classes Provided
+Students
+
+Input and output must be handled inside the main method of the Student class.
+
+Input Format
+First line: An integer n — number of students.
+
+For each student (repeat n times):
+An integer — Student ID
+A string — Student name
+An integer — Marks
+An integer — Age
+After all student entries:
+An integer — ID to search for.
+
+Constraints
+1 <= n <= 100
+1 <= Student ID <= 10000
+1 <= Name length <= 100
+0 <= Marks <= 100
+1 <= Age <= 100
+
+Sample Input:
+3
+101
+Alice
+85
+21
+102
+Bob
+78
+20
+103
+Charlie
+90
+22
+102
+
+Sample Output:
+103
+Charlie
+90
+22
+102
+Bob
+78
+20
+
+Explanation
+The student with the maximum age is Charlie (22 years old).
+The student with ID 102 is Bob.
+
+Notes
+If multiple students have the same maximum age, return the first one found.
+If no student matches the ID, print "No id Found".
