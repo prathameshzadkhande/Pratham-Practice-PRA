@@ -1,0 +1,139 @@
+package exam;
+import java.util.*;
+
+public class Employee {
+	public static void main(String args[]) {
+		Scanner sc = new Scanner(System.in);
+		int r = sc.nextInt();
+		sc.nextLine();
+		Company[] arr = new Company[r];
+		
+		for (int i =0 ; i<arr.length ; i++) {
+			int a = sc.nextInt();sc.nextLine();
+			String b = sc.nextLine();
+			int c = sc.nextInt() ;sc.nextLine();
+			Performance[] per = new Performance[c];
+			
+			for (int k = 0 ; k<per.length ; k++) {
+				String x = sc.nextLine(); 
+				double y = sc.nextDouble();sc.nextLine();
+				
+				per[k] = new Performance(x,y);
+			}
+			arr[i] = new Company(a,b,c,per);
+		}
+		
+		int depId = sc.nextInt(); sc.nextLine();
+		double rate = sc.nextDouble();sc.nextLine();sc.close();
+		HashSet<Double> ans1 = getUniqueRateByDept(arr,depId);
+		ArrayList<String> ans2 = getAvgRating(arr,rate);
+		if (ans1 != null) {
+			for (Double i : ans1) {
+				System.out.println(i);
+			}
+		}else {
+			System.out.println("Deparment Not Found");
+		}
+		
+		if (ans2 != null) {
+			for (String j : ans2) {
+				System.out.println(j);
+			}
+		}else {
+			System.out.println("No Department Found with Above threshold");
+		}
+		
+	}
+	
+	public static HashSet<Double> getUniqueRateByDept(Company[] arr , int depId){
+		HashSet<Double> ans = new HashSet<>();
+		
+		for (int i = 0 ; i<arr.length ; i++) {
+			if (arr[i].getDepId()==depId) {
+				Performance[] per = arr[i].getperfor();
+				for (int j = 0 ; j<per.length ; j++) {
+					ans.add(per[j].getRating());
+				}
+			}
+		}
+		if (ans.size() != 0) {
+			return ans ;
+		}else {
+			return null ;
+		}
+	}
+	
+	public static ArrayList<String> getAvgRating(Company[] arr , double rating) {
+		ArrayList<String> ans = new ArrayList<>() ;
+		
+		for (int i =0 ; i<arr.length ; i++) {
+			Performance[] per = arr[i].getperfor() ;
+			double sum = 0 ;
+			int c = 0 ;
+			for (int j = 0 ; j<per.length ;j++) {
+				sum = sum + per[i].getRating();
+				c++ ;
+			}
+			double avg = sum/c ;
+			if (avg > rating) {
+				ans.add(arr[i].getDepName());
+			}
+		}
+		if (ans.size() != 0) {
+			return ans ;
+		}else {
+			return null ;
+		}
+	}
+
+}
+
+
+class Company {
+	private int DepId ;
+	private String DepName ;
+	private int totalEmp ;
+	private Performance[] perfor ;
+	
+	public Company(int DepId , String DepName , int totalEmp , Performance[] perfor) {
+		this.DepId = DepId ;
+		this.DepName = DepName ;
+		this.totalEmp = totalEmp ;
+		this.perfor = perfor ;
+	}
+	
+	public int getDepId() {
+		return DepId ;
+	}
+	public String getDepName() {
+		return DepName ;
+	}
+	public int gettotalEmp() {
+		return totalEmp ;
+	}
+	public Performance[] getperfor() {
+		return perfor ;
+	}
+	
+	
+	
+	
+}
+
+class Performance{
+	private String Name ;
+	private double Rating ;
+	
+	public Performance(String Name , double Rating) {
+		this.Name = Name ;
+		this.Rating = Rating ;
+	}
+	
+	public String getName() {
+		return Name ;
+	}
+	public double getRating() {
+		return Rating ;
+	}
+	
+}
