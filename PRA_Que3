@@ -1,0 +1,85 @@
+Employee Department Rating Analysis
+Problem Statement
+You are tasked with developing a system to manage employee performance ratings across different departments in a company.
+
+Each Company department has:
+A department ID
+A department name
+A list of employees with their performance ratings.
+
+Your tasks are:
+Implement a method to find the unique ratings of employees belonging to a specific department (by department ID).
+Implement a method to find the names of departments whose average employee rating is strictly greater than a given threshold.
+Classes Provided
+Company
+Performance
+You must read all input inside the main method of the Employee class.
+
+Input Format
+First line: An integer r — number of departments.
+Next r blocks, for each department:
+An integer — Department ID.
+A string — Department Name.
+An integer — Number of employees.
+
+For each employee:
+A string — Employee Name.
+A double — Employee Rating.
+After reading all departments:
+An integer — Department ID to search unique ratings.
+A double — Rating threshold.
+
+Constraints
+1 <= r <= 100
+1 <= Department ID <= 1000
+1 <= Department Name length <= 100
+1 <= Number of employees <= 100
+1 <= Employee Name length <= 100
+0 <= Rating <= 5.0
+
+Output Format
+First, print the unique employee ratings (one rating per line) for the department with the given ID.
+If the department is not found, print "Deparment Not Found".
+Then, print the names of departments whose average employee rating is strictly greater than the given threshold (one name per line).
+If no such department is found, print "No Department Found with Above threshold".
+
+Sample Input :
+2
+101
+IT
+3
+Alice
+4.5
+Bob
+3.2
+Charlie
+4.5
+102
+HR
+2
+David
+4.0
+Eva
+3.8
+101
+4.0
+
+Sample Output:
+3.2
+4.5
+IT
+
+Explanation
+Department ID 101 corresponds to "IT" with employees rated 4.5, 3.2, and 4.5.
+Unique ratings are {3.2, 4.5}.
+IT" department's average rating is (4.5 + 3.2 + 4.5)/3 = 4.066..., which is greater than 4.0.
+Hence, "IT" is printed.
+
+Note
+If multiple ratings or department names are printed, they can appear in any order.
+If no department or ratings are found according to the criteria, the appropriate error messages must be printed as mentioned.
+
+
+
+
+
