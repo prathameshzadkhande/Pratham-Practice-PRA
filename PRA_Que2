@@ -1,0 +1,77 @@
+Problem Statement
+Employee Performance Analysis
+You are given information about different departments of a company. Each department has multiple employees, and each employee has a performance rating.
+
+You need to:
+Find unique ratings given by employees of a specific department.
+Find department names whose average employee rating is greater than a given threshold.
+
+Input Format
+First line: An integer r — number of departments.
+For each department:
+An integer — Department ID.
+A string — Department Name.
+An integer — Number of employees in the department.
+For each employee:
+A string — Employee Name.
+A double — Employee Rating.
+
+After all department details:
+An integer — Department ID to find unique ratings.
+A double — Threshold rating to find departments with average rating above it.
+
+Constraints
+1 <= r <= 100
+1 <= Department ID <= 1000
+1 <= Department Name length <= 100
+1 <= Number of employees <= 100
+1 <= Employee Name length <= 100
+0.0 <= Rating <= 5.0
+
+Output Format
+First, print the unique ratings (each on a new line) for the given Department ID in any order.
+If the Department ID is not found, print "Department Not Found".
+Then, print the department names where the average rating is greater than the given threshold (each on a new line).
+If no such department is found, print "No Department Found with Above threshold".
+
+Sample Input:
+
+2
+101
+Software
+3
+Alice
+4.2
+Bob
+3.8
+Charlie
+4.5
+102
+Marketing
+2
+David
+3.5
+Eve
+3.9
+101
+4.0
+
+Sample Output:
+
+4.2
+3.8
+4.5
+Software
+
+Explanation
+For Department ID 101, the ratings are 4.2, 3.8, and 4.5 (unique values).
+Department "Software" has an average rating of (4.2 + 3.8 + 4.5) / 3 = 4.1666..., which is greater than the threshold 4.0, so "Software" is printed.
+
+Notes
+You should create two classes:
+Company to store department details.
+Performance to store employee details.
+Use collections like HashSet and ArrayList appropriately.
+Carefully handle the case when no department matches the given Department ID or threshold condition.
+
+
